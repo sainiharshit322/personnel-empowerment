@@ -1,4 +1,4 @@
-# Personnel Empowerment Platform
+# Personnel Empowerment
 
 ![Python](https://img.shields.io/badge/python-3.12-blue.svg)
 ![Flask](https://img.shields.io/badge/flask-3.1.2-green.svg)
