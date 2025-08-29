@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - TSR Corporation</title>
+    <link rel="stylesheet" href="frontend/src/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="analytics-page">
+    <header class="main-header">
+        <div class="header-content">
+            <h1>TSR Corporation</h1>
+            <nav class="main-nav">
+                <a href="/" class="nav-link">Survey</a>
+                <a href="/analytics" class="nav-link active">Analytics Dashboard</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="analytics-container">
+        <div class="dashboard-header">
+            <h2>Employee Feedback Analytics Dashboard</h2>
+            <div class="stats-summary">
+                <div class="stat-card">
+                    <h3 id="total-responses">0</h3>
+                    <p>Total Responses</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="avg-sentiment">0%</h3>
+                    <p>Positive Sentiment</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="completion-rate">0%</h3>
+                    <p>Completion Rate</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="charts-section">
+            <div class="chart-container">
+                <div class="chart-box">
+                    <h3>Sentiment Distribution</h3>
+                    <canvas id="sentimentPieChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>Employee Happiness Index Trend</h3>
+                    <canvas id="responseBarChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="responses-section">
+            <h3>Individual User Responses</h3>
+            <div class="responses-container" id="responses-container">
+                <div class="loading">Loading responses...</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="frontend/src/analytics.js"></script>
+</body>
+</html>

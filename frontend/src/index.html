@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSR Corporation Feedback Survey</title>
+    <link rel="stylesheet" href="frontend/src/styles.css">
+</head>
+<body class="survey-page">
+    <header class="main-header">
+        <div class="header-content">
+            <h1>TSR Corporation</h1>
+            <nav class="main-nav">
+                <a href="/" class="nav-link active">Survey</a>
+                <a href="/analytics" class="nav-link">Analytics Dashboard</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="survey-box">
+            <div class="question-container">
+                <h2 id="question-number">Question 1 of 10</h2>
+                <p id="question-text">Loading...</p>
+            </div>
+            
+            <div class="comment-section">
+                <textarea 
+                    id="user-input" 
+                    placeholder="Please share your thoughts..."
+                    rows="4"
+                ></textarea>
+            </div>
+            
+            <div class="navigation">
+                <button id="next-btn" class="btn btn-primary">Next</button>
+                <button id="finish-btn" class="btn btn-success" style="display: none;">Finish Survey</button>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+        
+        <div class="thank-you" id="thank-you" style="display: none;">
+            <h2>Thank You!</h2>
+            <p>Thank you for your valuable feedback, it helps us to provide you the best from TSR Corporation</p>
+        </div>
+    </div>
+    
+    <script src="frontend/src/script.js"></script>
+</body>
+</html>
