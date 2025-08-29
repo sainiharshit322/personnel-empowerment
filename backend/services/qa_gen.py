@@ -2,18 +2,18 @@ import os
 from google import genai
 from google.genai import types
 from dotenv import load_dotenv
+from database.models import Client
 
 load_dotenv()
 
 
 def generate():
-    client = genai.Client(
-        api_key=os.getenv("GENAI_API_KEY")
-    )
-
+    client = Client()
     model = "gemini-2.0-flash-lite"
+
     num = 3 #Number of questions to generate
-    company_name = "TSR Corporation"
+    company_name = "TSR Corporation" #Company name
+    
     contents = [
         types.Content(
             role="user",

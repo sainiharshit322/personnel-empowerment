@@ -1,3 +1,5 @@
+#Entry point if backend is run independently
+
 from qa_gen import generate
 from sentiment_analysis import get_sentiment
 
