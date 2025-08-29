@@ -6,34 +6,35 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-async def generate():
+def generate():
     client = genai.Client(
         api_key=os.getenv("GENAI_API_KEY")
     )
 
     model = "gemini-2.0-flash-lite"
     num = 3 #Number of questions to generate
+    company_name = "TSR Corporation"
     contents = [
         types.Content(
             role="user",
             parts=[
                 types.Part.from_text(text=f"""
-                Generate {num} employee engagement question. The question should focus on employee Engagement Surveys, Manager/Team lead Feedback, Culture Assessment, Goal Alignment for the company named "TSR Corporation".
+                Generate {num} employee engagement question. The question should focus on employee Engagement Surveys, Manager/Team lead Feedback, Culture Assessment, Goal Alignment for the company named {company_name}.
 
                 Examples of Questions:
 
-                How likely is it that you would recommend (company) as a place to work?
+                How likely is it that you would recommend {company_name} as a place to work?
                 My direct manager/supervisor/leader cares about my opinions.
                 I am inspired by the purpose and mission of our organization.
-                The overall business goals and strategies set by (company) are taking us in the right direction.
+                The overall business goals and strategies set by {company_name} are taking us in the right direction.
                 The demands of my workload are manageable.
                 I understand how my work supports the goals and objectives of my team.
-                People from all backgrounds are treated fairly at (company).
-                A diverse workforce is a clear priority at (company) (for example, in terms of gender, ethnicity, disability).
-                Team member health and wellbeing is a priority at (company).
-                I understand how (company) sustainability efforts contribute to positive outcomes for the environment, our communities, and stakeholders.
-                (company) provides AI-upskilling to enhance my productivity
-                I am satisfied with the steps (company) is taking to reduce its environmental impact"""),
+                People from all backgrounds are treated fairly at {company_name}.
+                A diverse workforce is a clear priority at {company_name} (for example, in terms of gender, ethnicity, disability).
+                Team member health and wellbeing is a priority at {company_name}.
+                I understand how {company_name} sustainability efforts contribute to positive outcomes for the environment, our communities, and stakeholders.
+                {company_name} provides AI-upskilling to enhance my productivity
+                I am satisfied with the steps {company_name} is taking to reduce its environmental impact"""),
             ],
         ),
     ]

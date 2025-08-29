@@ -2,7 +2,7 @@ import os
 import transformers
 from transformers import pipeline
 
-async def get_sentiment(text):
+def get_sentiment(text):
     #Set to avoid warning messages.
     transformers.logging.set_verbosity_error()
     sentiment_classifier = pipeline(task="sentiment-analysis",

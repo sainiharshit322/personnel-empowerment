@@ -19,8 +19,8 @@ class MongoDBManager:
         try:
             # Get MongoDB connection string from environment variables
             # Default to local MongoDB if not specified
-            mongo_uri = os.getenv('MONGODB_URI', 'mongodb://localhost:27017/')
-            db_name = os.getenv('MONGODB_DATABASE', 'personnel_empowerment')
+            mongo_uri = os.getenv('MONGODB_URI')
+            db_name = os.getenv('MONGODB_DATABASE')
             
             # Create MongoDB client
             self.client = MongoClient(
