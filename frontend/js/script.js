@@ -113,38 +113,38 @@ function saveCurrentResponse() {
 }
 
 // Save responses to server or download as file
-// async function saveToJsonFile() {
-//     const surveyData = {
-//         surveyId: generateSurveyId(),
-//         completedAt: new Date().toISOString(),
-//         totalQuestions: questions.length,
-//         responses: responses.filter(response => response !== undefined)
-//     };
+async function saveToJsonFile() {
+    const surveyData = {
+        surveyId: generateSurveyId(),
+        completedAt: new Date().toISOString(),
+        totalQuestions: questions.length,
+        responses: responses.filter(response => response !== undefined)
+    };
     
-//     if (useServerSaving) {
-//         try {
-//             const response = await fetch('/api/save-survey', {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                 },
-//                 body: JSON.stringify(surveyData)
-//             });
+    if (useServerSaving) {
+        try {
+            const response = await fetch('/api/save-survey', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(surveyData)
+            });
             
-//             const result = await response.json();
-//             if (result.success) {
-//                 console.log('Survey saved to server:', result.filename);
-//             } else {
-//                 throw new Error(result.error);
-//             }
-//         } catch (error) {
-//             console.error('Failed to save to server, falling back to download:', error);
-//             downloadSurveyData(surveyData);
-//         }
-//     } else {
-//         downloadSurveyData(surveyData);
-//     }
-// }
+            const result = await response.json();
+            if (result.success) {
+                console.log('Survey saved to server:', result.filename);
+            } else {
+                throw new Error(result.error);
+            }
+        } catch (error) {
+            console.error('Failed to save to server, falling back to download:', error);
+            downloadSurveyData(surveyData);
+        }
+    } else {
+        downloadSurveyData(surveyData);
+    }
+}
 
 // Download survey data as JSON file
 // function downloadSurveyData(surveyData) {

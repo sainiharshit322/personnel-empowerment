@@ -2,7 +2,7 @@ import os
 from google import genai
 from google.genai import types
 from dotenv import load_dotenv
-from database.models import Client
+from backend.database.models import Client
 
 load_dotenv()
 

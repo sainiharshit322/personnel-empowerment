@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, send_from_directory, request
 from flask_cors import CORS
-from backend.src.qa_gen import generate
-from backend.src.sentiment_analysis import get_sentiment
-from backend.src.database import mongodb_manager
+from backend.services.qa_gen import generate
+from backend.services.sentiment_analysis import get_sentiment
+from backend.database.db_utils import mongodb_manager
 import os
 import logging
 
@@ -91,11 +91,11 @@ def save_survey():
 # Serve static files
 @app.route('/')
 def serve_index():
-    return send_from_directory('.', 'frontend/src/index.html')
+    return send_from_directory('.', 'frontend/index.html')
 
 @app.route('/analytics')
 def serve_analytics():
-    return send_from_directory('.', 'frontend/src/analytics.html')
+    return send_from_directory('.', 'frontend/analytics.html')
 
 @app.route('/<path:filename>')
 def serve_static(filename):
