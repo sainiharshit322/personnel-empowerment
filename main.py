@@ -2,7 +2,7 @@ from flask import Flask, jsonify, send_from_directory, request
 from flask_cors import CORS
 from backend.src.qa_gen import generate
 from backend.src.sentiment_analysis import get_sentiment
-from backend.src.mongodb_manager import mongodb_manager
+from backend.src.database import mongodb_manager
 import os
 import logging
 
