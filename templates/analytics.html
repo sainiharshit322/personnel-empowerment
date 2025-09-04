@@ -3,20 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytics Dashboard - TSR Corporation</title>
-    <link rel="stylesheet" href="frontend/css/styles.css">
+    <title>Personnel Empowerment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="analytics-page">
-    <header class="main-header">
-        <div class="header-content">
-            <h1>TSR Corporation</h1>
-            <nav class="main-nav">
-                <a href="/" class="nav-link">Survey</a>
-                <a href="/analytics" class="nav-link active">Analytics Dashboard</a>
-            </nav>
-        </div>
-    </header>
+    {% set active_page = 'analytics' %}
+    {% include 'includes/header.html' %}
     
     <div class="analytics-container">
         <div class="dashboard-header">
@@ -57,7 +50,7 @@
             </div>
         </div>
     </div>
-    
-    <script src="frontend/js/analytics.js"></script>
+
+    <script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
 </body>
 </html>

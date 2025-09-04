@@ -3,19 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TSR Corporation Feedback Survey</title>
-    <link rel="stylesheet" href="frontend/css/styles.css">
+    <title>Personnel Empowerment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body class="survey-page">
-    <header class="main-header">
-        <div class="header-content">
-            <h1>TSR Corporation</h1>
-            <nav class="main-nav">
-                <a href="/" class="nav-link active">Survey</a>
-                <a href="/analytics" class="nav-link">Analytics Dashboard</a>
-            </nav>
-        </div>
-    </header>
+    {% set active_page = 'survey' %}
+    {% include 'includes/header.html' %}
     
     <div class="container">
         <div class="survey-box">
@@ -48,6 +41,6 @@
         </div>
     </div>
     
-    <script src="frontend/js/script.js"></script>
+    <script src="{{ url_for('static', filename='js/survey.js') }}"></script>
 </body>
 </html>

@@ -7,9 +7,9 @@
 //     "Do you feel your workload is manageable and reasonable?"
 // ];
 
-let questions = [];
 
 // Survey state
+let questions = [];
 let currentQuestion = 0;
 let responses = [];
 let useServerSaving = false;
@@ -42,12 +42,6 @@ async function loadQuestions() {
         console.log(`Loaded ${questions.length} questions from Python API`);
     } catch (error) {
         console.error('Failed to load questions:', error);
-        // Fallback questions
-        // questions = [
-        //     "How satisfied are you with your current work-life balance?",
-        //     "How would you rate the communication from your immediate supervisor?",
-        //     "Do you feel your workload is manageable and reasonable?"
-        // ];
     }
 }
 
@@ -77,10 +71,11 @@ function updateQuestion() {
     const progressPercent = ((currentQuestion + 1) / questions.length) * 100;
     progress.style.width = `${progressPercent}%`;
     
-    // Load saved response if it exists
+    // Unload saved response if it exists
     if (responses[currentQuestion]) {
         userInput.value = responses[currentQuestion].answer;
-    } else {
+    }
+    else {
         userInput.value = '';
     }
     
@@ -112,8 +107,8 @@ function saveCurrentResponse() {
     localStorage.setItem('surveyResponses', JSON.stringify(responses));
 }
 
-// Save responses to server or download as file
-async function saveToJsonFile() {
+// Save responses to server
+async function saveToDatabase() {
     const surveyData = {
         surveyId: generateSurveyId(),
         completedAt: new Date().toISOString(),
@@ -138,29 +133,12 @@ async function saveToJsonFile() {
                 throw new Error(result.error);
             }
         } catch (error) {
-            console.error('Failed to save to server, falling back to download:', error);
-            downloadSurveyData(surveyData);
+            console.error('Failed to save to server:', error);
         }
     } else {
-        downloadSurveyData(surveyData);
+        console.error("Server Error");
     }
 }
-
-// Download survey data as JSON file
-// function downloadSurveyData(surveyData) {
-//     const dataStr = JSON.stringify(surveyData, null, 2);
-//     const dataBlob = new Blob([dataStr], {type: 'application/json'});
-//     const url = URL.createObjectURL(dataBlob);
-    
-//     const link = document.createElement('a');
-//     link.href = url;
-//     link.download = `tsr_survey_${surveyData.surveyId}.json`;
-//     document.body.appendChild(link);
-//     link.click();
-//     document.body.removeChild(link);
-    
-//     URL.revokeObjectURL(url);
-// }
 
 // Generate unique survey ID
 function generateSurveyId() {
@@ -200,8 +178,8 @@ async function finishSurvey() {
     thankYou.style.display = 'block';
     
     // Save survey data
-    await saveToJsonFile();
-    
+    await saveToDatabase();
+
     // Clear localStorage
     localStorage.removeItem('surveyResponses');
     

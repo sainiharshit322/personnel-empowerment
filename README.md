@@ -72,12 +72,8 @@ A comprehensive AI-powered employee engagement platform that leverages machine l
 
 5. **Run the application**
    ```bash
-   python main.py
+   flask run
    ```
-
-6. **Access the application**
-   - Survey Interface: `http://localhost:5000`
-   - Analytics Dashboard: `http://localhost:5000/analytics`
 
 ## 📊 API Endpoints
 
