@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure, ServerSelectionTimeoutError
 import logging
 from dotenv import load_dotenv
+from database.config import Config
 
 # Load environment variables
 load_dotenv()
@@ -17,10 +18,9 @@ class MongoDBManager:
     def _connect(self):
         """Establish connection to MongoDB"""
         try:
-            # Get MongoDB connection string from environment variables
-            # Default to local MongoDB if not specified
-            mongo_uri = os.getenv('MONGODB_URI')
-            db_name = os.getenv('MONGODB_DATABASE')
+            
+            mongo_uri = Config.mongo_uri
+            db_name = Config.db_name
             
             # Create MongoDB client
             self.client = MongoClient(

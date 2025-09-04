@@ -2,13 +2,12 @@ import os
 from google import genai
 from google.genai import types
 from dotenv import load_dotenv
-from database.models import Client
+from database.config import Config
 
 load_dotenv()
 
-
 def generate():
-    client = Client()
+    client = Config.model
     model = "gemini-2.0-flash-lite"
 
     num = 3 #Number of questions to generate
