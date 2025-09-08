@@ -234,7 +234,7 @@ function displayUserResponses(responses) {
         
         survey.responses.forEach((response, qIndex) => {
             const sentiAnalysis = response.SentiAnalysis || {};
-            const sentimentLabel = sentiAnalysis.label || 'NEU';
+            const sentimentLabel = sentiAnalysis.label || 'NEUTRAL';
             const sentimentScore = sentiAnalysis.confidence || 50;
             
             // Sentiment color and icon
@@ -242,11 +242,11 @@ function displayUserResponses(responses) {
             let sentimentIcon = '😐';
             let displayLabel = 'NEUTRAL';
             
-            if (sentimentLabel === 'POS') {
+            if (sentimentLabel === 'POSITIVE') {
                 sentimentClass = 'sentiment-positive';
                 sentimentIcon = '😊';
                 displayLabel = 'POSITIVE';
-            } else if (sentimentLabel === 'NEG') {
+            } else if (sentimentLabel === 'NEGATIVE') {
                 sentimentClass = 'sentiment-negative';
                 sentimentIcon = '😞';
                 displayLabel = 'NEGATIVE';

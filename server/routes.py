@@ -26,7 +26,10 @@ def register_routes(app):
             sentiment_results = []
             if answers:
                 try:
-                    sentiment_results = get_sentiment(answers)
+                    for answer in answers:
+                        result = get_sentiment(answer)
+                        sentiment_results.append(result)
+
                 except Exception as e:
                     print(f'Error analyzing sentiment: {e}')
                     # Fallback to neutral sentiment if analysis fails
@@ -207,12 +210,12 @@ def register_routes(app):
                     
                     # Get sentiment from pre-computed SentiAnalysis field
                     senti_analysis = response.get('SentiAnalysis', {})
-                    sentiment_label = senti_analysis.get('label', 'NEU')
+                    sentiment_label = senti_analysis.get('label', 'NEUTRAL')
                     
-                    if sentiment_label == 'POS':
+                    if sentiment_label == 'POSITIVE':
                         positive_count += 1
                         question_sentiment[question]['positive'] += 1
-                    elif sentiment_label == 'NEG':
+                    elif sentiment_label == 'NEGATIVE':
                         negative_count += 1
                         question_sentiment[question]['negative'] += 1
                     else:  # NEUTRAL or any other value

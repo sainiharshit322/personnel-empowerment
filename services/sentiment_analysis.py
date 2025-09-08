@@ -1,17 +1,40 @@
-import os
-import transformers
-from transformers import pipeline
+import torch
+from transformers import AutoTokenizer
+from transformers import AutoModelForSequenceClassification
+
+
+tokenizer = AutoTokenizer.from_pretrained("distilbert/distilbert-base-uncased")
+
+my_model = AutoModelForSequenceClassification.from_pretrained("im-tsr/distilbert-finetuned-youtube_sentiment_analysis")
 
 def get_sentiment(text):
-    #Set to avoid warning messages.
-    transformers.logging.set_verbosity_error()
-    sentiment_classifier = pipeline(task="sentiment-analysis",
-                                    model="finiteautomata/bertweet-base-sentiment-analysis")
 
-    cache_dir = os.path.expanduser('~') + "/.cache/huggingface/hub"
+    try:
+        inputs = tokenizer(text, return_tensors="pt", truncation=True, max_length=128)
 
-    return sentiment_classifier(text)
+        with torch.no_grad():
+            outputs = my_model(**inputs)
+
+        logits = outputs.logits
+        probabilities = torch.nn.functional.softmax(logits, dim=-1)
+
+        predicted_class_id = logits.argmax().item()
+        confidence_score = probabilities[0][predicted_class_id].item()
+
+        sentiment_label = my_model.config.id2label[predicted_class_id]
+
+        return {
+            "label": sentiment_label,
+            "score": confidence_score
+        }
+
+    except Exception as e:
+        print(f"Error analyzing sentiment: {e}")
 
 
 if __name__ == "__main__":
-    print(get_sentiment(["This is a great course", "I learned a lot from this course."]))
+
+    sentences = ["I love programming!", "I hate bugs!", "This is okay."]
+    for sentence in sentences:
+        result = get_sentiment(sentence)
+        print(f"Input: {sentence} => Sentiment: {result}")
