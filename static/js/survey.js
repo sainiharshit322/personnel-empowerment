@@ -142,7 +142,7 @@ async function saveToDatabase() {
 
 // Generate unique survey ID
 function generateSurveyId() {
-    return 'survey_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+    return Date.now().toString();
 }
 
 // Navigate to next question

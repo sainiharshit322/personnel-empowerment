@@ -81,7 +81,13 @@ function createSentimentPieChart(sentimentData) {
             maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    position: 'bottom'
+                    position: 'bottom',
+                    labels: {
+                        color: '#E0E0E0',
+                        font: {
+                            weight: 'bold'
+                        }
+                    }
                 },
                 tooltip: {
                     callbacks: {
@@ -110,8 +116,6 @@ function createResponseBarChart(sentimentData) {
     // Mock trend data - this will be replaced with real trend data from backend
     const trendLabels = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Current'];
     const trendData = [20, 25, 30, 35, sentimentData.positive || 0];
-    // const negativeData = [15, 12, 10, 8, sentimentData.negative || 0];
-    // const neutralData = [25, 23, 20, 18, sentimentData.neutral || 0];
     
     responseChart = new Chart(ctx, {
         type: 'line',
@@ -121,40 +125,14 @@ function createResponseBarChart(sentimentData) {
                 {
                     // label: 'Positive',
                     data: trendData,
-                    borderColor: '#4c87afff',
-                    backgroundColor: 'rgba(76, 127, 175, 0.1)',
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
                     borderWidth: 2,
                     fill: true,
                     tension: 0.4,
-                    pointBackgroundColor: '#4c87afff',
-                    pointBorderColor: '#4c87afff',
+                    pointBackgroundColor: '#667eea',
                     pointRadius: 3
                 },
-                
-                // {
-                //     label: 'Negative',
-                //     data: negativeData,
-                //     borderColor: '#f44336',
-                //     backgroundColor: 'rgba(244, 67, 54, 0.1)',
-                //     borderWidth: 3,
-                //     fill: false,
-                //     tension: 0.4,
-                //     pointBackgroundColor: '#f44336',
-                //     pointBorderColor: '#f44336',
-                //     pointRadius: 5
-                // },
-                // {
-                //     label: 'Neutral',
-                //     data: neutralData,
-                //     borderColor: '#FF9800',
-                //     backgroundColor: 'rgba(255, 152, 0, 0.1)',
-                //     borderWidth: 3,
-                //     fill: false,
-                //     tension: 0.4,
-                //     pointBackgroundColor: '#FF9800',
-                //     pointBorderColor: '#FF9800',
-                //     pointRadius: 5
-                // }
             ]
         },
         options: {
@@ -165,17 +143,29 @@ function createResponseBarChart(sentimentData) {
                     display: true,
                     title: {
                         display: true,
-                        text: 'Time Period'
+                        text: 'Time Period',
+                        color: '#E0E0E0',
+                        font: {
+                            weight: 'bold'
+                        }
+                    },
+                    ticks: {
+                        color: '#E0E0E0'
                     }
                 },
                 y: {
                     beginAtZero: true,
                     title: {
                         display: true,
-                        text: 'Number of Responses'
+                        text: 'Number of Responses',
+                        color: '#E0E0E0',
+                        font: {
+                            weight: 'bold'
+                        }
                     },
                     ticks: {
-                        stepSize: 1
+                        stepSize: 1,
+                        color: '#E0E0E0'
                     }
                 }
             },
@@ -225,7 +215,7 @@ function displayUserResponses(responses) {
                 <div class="response-header">
                     <h4>Survey Response ${index + 1}</h4>
                     <div class="response-meta">
-                        <span class="survey-id">ID: ${survey.surveyId.substring(7, 20)}...</span>
+                        <span class="survey-id">ID: ${survey.surveyId}</span>
                         <span class="completion-date">${completedDate} at ${completedTime}</span>
                     </div>
                 </div>

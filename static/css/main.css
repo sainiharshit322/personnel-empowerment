@@ -5,8 +5,8 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: sans-serif;
+    background: #09090b;
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -18,7 +18,7 @@ body.survey-page {
 }
 
 body.analytics-page {
-    background: #f5f7fa;
+    background: #09090b;
 }
 
 .container {
@@ -31,11 +31,12 @@ body.analytics-page {
     min-width: 600px;
     max-width: 400px;
     margin: 0 auto;
-    min-height: calc(100vh - 80px); /* Ensure enough height accounting for header */
+    min-height: calc(100vh - 80px);
 }
 
 .survey-box {
-    background: white;
+    background: #18181b;
+    border: 1px solid rgb(68, 68, 68, 0.5);
     border-radius: 15px;
     padding: 50px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
@@ -47,7 +48,7 @@ body.analytics-page {
 
 .survey-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 40px rgb(37, 29, 51, 0.5);
 }
 
 .question-container {
@@ -60,14 +61,14 @@ body.analytics-page {
 }
 
 .question-container h2 {
-    color: #333;
+    color: #B0B0B0;
     font-size: 1.2em;
     margin-bottom: 20px;
     font-weight: 500;
 }
 
 .question-container p {
-    color: #555;
+    color: #E0E0E0;
     font-size: 1.2em;
     line-height: 1.7;
     font-weight: 600;
@@ -84,9 +85,11 @@ body.analytics-page {
 .comment-section textarea {
     width: 100%;
     padding: 15px;
-    border: 2px solid #e0e0e0;
+    background: #27272a;
+    border: 1px solid #55555500;
     border-radius: 10px;
     font-size: 16px;
+    color: #E0E0E0;
     font-family: inherit;
     resize: vertical;
     transition: border-color 0.3s ease;
@@ -95,7 +98,7 @@ body.analytics-page {
 
 .comment-section textarea:focus {
     outline: none;
-    border-color: #667eea;
+    border: 2px solid #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
@@ -116,28 +119,31 @@ body.analytics-page {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #667eea;
     color: white;
+    font-family: inherit;
+    font-weight: lighter;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0px 10px 35px rgb(102, 126, 234, 0.7);
 }
 
 .btn-success {
-    background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+    background: #667eea;
     color: white;
+    font-family: inherit;
+    font-weight: lighter;
 }
 
 .btn-success:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(86, 171, 47, 0.4);
+    box-shadow: 0px 10px 35px rgb(102, 126, 234, 0.7);
 }
 
 .progress-bar {
@@ -150,14 +156,14 @@ body.analytics-page {
 
 .progress {
     height: 100%;
-    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(90deg, #262626 0%, #667eea 100%);
     border-radius: 4px;
     transition: width 0.3s ease;
     width: 10%;
 }
 
 .thank-you {
-    background: white;
+    background: #18181b;
     border-radius: 15px;
     padding: 40px;
     text-align: center;
@@ -166,13 +172,13 @@ body.analytics-page {
 }
 
 .thank-you h2 {
-    color: #56ab2f;
+    color: #667eea;
     font-size: 2.5em;
     margin-bottom: 20px;
 }
 
 .thank-you p {
-    color: #555;
+    color: #E0E0E0;
     font-size: 1.2em;
     line-height: 1.6;
     max-width: 400px;
@@ -225,9 +231,10 @@ body.analytics-page {
 
 /* Header Styles */
 .main-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #09090b;
     padding: 1rem 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #555;
 }
 
 .header-content {
@@ -256,16 +263,17 @@ body.analytics-page {
     padding: 10px 20px;
     border-radius: 25px;
     transition: all 0.3s ease;
-    font-weight: 500;
+    font-family: inherit;
+    font-weight: lighter;
 }
 
 .nav-link:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgb(102, 126, 234, 0.5);
     transform: translateY(-2px);
 }
 
 .nav-link.active {
-    background: rgba(255, 255, 255, 0.3);
+    background: #667eea;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -283,7 +291,7 @@ body.analytics-page {
 }
 
 .dashboard-header h2 {
-    color: #333;
+    color: white;
     font-size: 2.5em;
     margin-bottom: 30px;
     font-weight: 600;
@@ -297,7 +305,8 @@ body.analytics-page {
 }
 
 .stat-card {
-    background: white;
+    background: #18181b;
+    border: 1px solid rgb(68, 68, 68, 0.5);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -317,7 +326,7 @@ body.analytics-page {
 }
 
 .stat-card p {
-    color: #666;
+    color: #E0E0E0;
     font-size: 1.1em;
     font-weight: 500;
 }
@@ -331,7 +340,7 @@ body.analytics-page {
 }
 
 .sentiment-breakdown small {
-    color: #555;
+    color: white;
     font-size: 0.8em;
     line-height: 1.4;
 }
@@ -348,14 +357,15 @@ body.analytics-page {
 }
 
 .chart-box {
-    background: white;
+    background: #18181b;
+    border: 1px solid rgb(68, 68, 68, 0.5);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .chart-box h3 {
-    color: #333;
+    color: #E0E0E0;
     margin-bottom: 20px;
     font-size: 1.3em;
     text-align: center;
@@ -366,14 +376,15 @@ body.analytics-page {
 }
 
 .responses-section {
-    background: white;
+    background: #18181b;
+    border: 1px solid rgb(68, 68, 68, 0.5);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .responses-section h3 {
-    color: #333;
+    color: white;
     margin-bottom: 30px;
     font-size: 1.5em;
     text-align: center;
@@ -385,7 +396,7 @@ body.analytics-page {
 }
 
 .response-card {
-    background: #f8f9fa;
+    background: #27272a;
     border-radius: 10px;
     padding: 25px;
     border-left: 4px solid #667eea;
@@ -403,11 +414,11 @@ body.analytics-page {
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid #B0B0B0;
 }
 
 .response-header h4 {
-    color: #333;
+    color: white;
     font-size: 1.2em;
     margin: 0;
 }
@@ -416,18 +427,18 @@ body.analytics-page {
     display: flex;
     gap: 15px;
     font-size: 0.9em;
-    color: #666;
+    color: #adadad;
 }
 
 .survey-id {
-    background: #e3f2fd;
+    background: rgb(102, 126, 234, 0.2);
     padding: 4px 8px;
     border-radius: 4px;
     font-family: monospace;
 }
 
 .completion-date {
-    background: #f3e5f5;
+    background: rgb(102, 126, 234, 0.2);
     padding: 4px 8px;
     border-radius: 4px;
 }
@@ -438,25 +449,24 @@ body.analytics-page {
 }
 
 .question-response {
-    background: white;
+    background: #18181b;
     padding: 15px;
     border-radius: 8px;
-    border-left: 3px solid #4CAF50;
+    /* border-left: 3px solid #4CAF50; */
 }
 
 .question-text {
-    color: #333;
+    color: #B0B0B0;
     margin-bottom: 10px;
     font-weight: 500;
 }
 
 .answer-text {
-    color: #555;
+    color: #E0E0E0;
     font-style: italic;
     padding: 10px;
-    background: #f8f9fa;
+    background: #27272a;
     border-radius: 5px;
-    border-left: 3px solid #dee2e6;
     margin-bottom: 10px;
 }
 
@@ -509,13 +519,13 @@ body.analytics-page {
 .loading, .error, .no-data {
     text-align: center;
     padding: 40px;
-    color: #666;
+    color: #E0E0E0;
     font-size: 1.1em;
 }
 
 .error {
     color: #f44336;
-    background: #ffebee;
+    background: #27272a;
     border-radius: 8px;
 }
 
