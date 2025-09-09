@@ -7,14 +7,3 @@ flask-cors
 google-genai
 pymongo
 python-dotenv
-
-
-''' tensorflow==2.19.0
-torch==2.7.0
-transformers==4.53.0
-tf-keras==2.19.0
-flask==3.1.2
-flask-cors==6.0.1
-google-genai==1.31.0
-pymongo==4.6.1
-python-dotenv==1.0.0 '''
