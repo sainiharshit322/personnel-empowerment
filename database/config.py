@@ -9,4 +9,4 @@ class Config:
 
     mongo_uri = os.getenv('MONGODB_URI')
     
-    db_name = os.getenv('MONGODB_DATABASE')
+    db_name = os.getenv('MONGODB_DATABASE', 'personnel_empowerment')
