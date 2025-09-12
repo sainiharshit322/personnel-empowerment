@@ -28,7 +28,7 @@ class MongoDBManager:
                 serverSelectionTimeoutMS=5000,  # 5 second timeout
                 connectTimeoutMS=10000,  # 10 second connection timeout
                 socketTimeoutMS=20000,  # 20 second socket timeout
-                tlsAllowInvalidCertificates=True,  # This replaces ssl=True and ssl_cert_reqs='CERT_NONE'
+                tlsAllowInvalidCertificates=True,
                 retryWrites=True,
                 w='majority'
             )
