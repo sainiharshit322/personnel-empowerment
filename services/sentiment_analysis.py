@@ -1,35 +1,21 @@
-import torch
-from transformers import AutoTokenizer
-from transformers import AutoModelForSequenceClassification
-
-
-tokenizer = AutoTokenizer.from_pretrained("distilbert/distilbert-base-uncased")
-
-my_model = AutoModelForSequenceClassification.from_pretrained("im-tsr/distilbert-finetuned-youtube_sentiment_analysis")
+from gradio_client import Client
 
 def get_sentiment(text):
+    client = Client("im-tsr/sentiment-analysis")
+    result = client.predict(
+            text=text,
+            api_name="/process_sentiment"
+    )
 
-    try:
-        inputs = tokenizer(text, return_tensors="pt", truncation=True, max_length=128)
+    pos = result[0].split('>')[1].split('%')[0]
+    neg = result[1].split('>')[1].split('%')[0]
+    neu = result[2].split('>')[1].split('%')[0]
 
-        with torch.no_grad():
-            outputs = my_model(**inputs)
+    sentiment_dict = {"POSITIVE": float(pos), "NEUTRAL": float(neg), "NEGATIVE": float(neu)}
 
-        logits = outputs.logits
-        probabilities = torch.nn.functional.softmax(logits, dim=-1)
+    highest = max(sentiment_dict.items(), key=lambda x: x[1])
 
-        predicted_class_id = logits.argmax().item()
-        confidence_score = probabilities[0][predicted_class_id].item()
-
-        sentiment_label = my_model.config.id2label[predicted_class_id]
-
-        return {
-            "label": sentiment_label,
-            "score": confidence_score
-        }
-
-    except Exception as e:
-        print(f"Error analyzing sentiment: {e}")
+    return {'label': highest[0].upper(), 'score': highest[1]}
 
 
 if __name__ == "__main__":
