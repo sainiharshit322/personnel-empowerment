@@ -29,9 +29,6 @@ class MongoDBManager:
                 connectTimeoutMS=10000,  # 10 second connection timeout
                 socketTimeoutMS=20000,  # 20 second socket timeout
                 ssl=True,
-                ssl_cert_reqs='CERT_NONE',
-                retryWrites=True,
-                w='majority'
             )
             
             # Test the connection
