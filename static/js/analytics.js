@@ -115,7 +115,7 @@ function createResponseBarChart(sentimentData) {
     
     // Mock trend data - this will be replaced with real trend data from backend
     const trendLabels = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Current'];
-    const trendData = [20, 25, 30, 35, sentimentData.positive || 0];
+    const trendData = [9, 12, 8, 11, sentimentData.positive || 0];
     
     responseChart = new Chart(ctx, {
         type: 'line',
@@ -213,7 +213,7 @@ function displayUserResponses(responses) {
         html += `
             <div class="response-card">
                 <div class="response-header">
-                    <h4>Survey Response ${index + 1}</h4>
+                    <h4></h4>
                     <div class="response-meta">
                         <span class="survey-id">ID: ${survey.surveyId}</span>
                         <span class="completion-date">${completedDate} at ${completedTime}</span>
@@ -225,7 +225,6 @@ function displayUserResponses(responses) {
         survey.responses.forEach((response, qIndex) => {
             const sentiAnalysis = response.SentiAnalysis || {};
             const sentimentLabel = sentiAnalysis.label || 'NEUTRAL';
-            const sentimentScore = sentiAnalysis.confidence || 50;
             
             // Sentiment color and icon
             let sentimentClass = 'sentiment-neutral';
@@ -253,7 +252,6 @@ function displayUserResponses(responses) {
                     <div class="sentiment-analysis ${sentimentClass}">
                         <span class="sentiment-icon">${sentimentIcon}</span>
                         <span class="sentiment-label">${displayLabel}</span>
-                        <span class="sentiment-score">${sentimentScore}%</span>
                     </div>
                 </div>
             `;

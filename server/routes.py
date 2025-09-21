@@ -33,7 +33,7 @@ def register_routes(app):
                 except Exception as e:
                     print(f'Error analyzing sentiment: {e}')
                     # Fallback to neutral sentiment if analysis fails
-                    sentiment_results = [{'label': 'NEUTRAL', 'score': 0.5} for _ in answers]
+                    sentiment_results = [{'label': 'NEUTRAL'} for _ in answers]
 
             # Sentiment analysis for each response
             sentiment_index = 0
@@ -42,23 +42,17 @@ def register_routes(app):
                     if sentiment_index < len(sentiment_results):
                         sentiment_result = sentiment_results[sentiment_index]
                         response['SentiAnalysis'] = {
-                            'label': sentiment_result.get('label', 'NEUTRAL'),
-                            'score': round(sentiment_result.get('score', 0.5), 3),
-                            'confidence': round(sentiment_result.get('score', 0.5) * 100, 1)
+                            'label': sentiment_result.get('label', 'NEUTRAL')
                         }
                         sentiment_index += 1
                     else:
                         response['SentiAnalysis'] = {
-                            'label': 'NEUTRAL',
-                            'score': 0.5,
-                            'confidence': 50.0
+                            'label': 'NEUTRAL'
                         }
                 else:
                     # For empty answers
                     response['SentiAnalysis'] = {
-                        'label': 'NEUTRAL',
-                        'score': 0.5,
-                        'confidence': 50.0
+                        'label': 'NEUTRAL'
                     }
             
             # Save to MongoDB
