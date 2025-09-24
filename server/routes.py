@@ -1,6 +1,6 @@
 from flask import jsonify, send_from_directory, request, render_template
-from services.qa_gen import generate
-from services.sentiment_analysis import get_sentiment
+from utils.qa_gen import generate
+from utils.sentiment_analysis import get_sentiment
 from database.db_utils import mongodb_manager
 import os
 import logging

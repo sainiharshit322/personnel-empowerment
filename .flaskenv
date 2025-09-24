@@ -5,7 +5,7 @@ FLASK_APP=main.py
 FLASK_ENV=development
 
 # Enable debug mode, useful for development
-FLASK_DEBUG=False
+FLASK_DEBUG=True
 
 # Default port is 5000
 FLASK_PORT=5000
