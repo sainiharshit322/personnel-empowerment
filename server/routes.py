@@ -89,21 +89,6 @@ def register_routes(app):
             print(f'Error saving survey: {error}')
             return jsonify({'success': False, 'error': str(error)}), 500
 
-    # Serve static files
-    @app.route('/')
-    @app.route('/survey')
-    def index():
-        return render_template('index.html')
-        
-
-    @app.route('/analytics')
-    def serve_analytics():
-        return render_template('analytics.html')
-
-    @app.route('/<path:filename>')
-    def serve_static(filename):
-        return send_from_directory('.', filename)
-
     # API endpoints
     @app.route('/api/questions')
     def get_questions():
