@@ -21,7 +21,6 @@ import {
   ClockIcon
 } from '@heroicons/react/24/outline';
 
-// Register Chart.js components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -48,7 +47,6 @@ const Analytics = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Load analytics data
   useEffect(() => {
     loadAnalyticsData();
   }, []);
@@ -158,7 +156,6 @@ const Analytics = () => {
     }
   };
 
-  // Happiness Index Trend Line Chart Configuration
   const trendLabels = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Current'];
   const trendData = [15, 20, 25, 22, chartData.sentimentData.positive];
 
@@ -236,7 +233,6 @@ const Analytics = () => {
     }
   };
 
-  // Format date and time
   const formatDateTime = (dateString) => {
     const date = new Date(dateString);
     return {
@@ -245,7 +241,6 @@ const Analytics = () => {
     };
   };
 
-  // Get sentiment styling
   const getSentimentStyling = (sentimentLabel) => {
     const label = sentimentLabel || 'NEUTRAL';
     switch (label) {
@@ -292,7 +287,6 @@ const Analytics = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
-        {/* Dashboard Header */}
         <div className="mb-8">
           <h2 className="text-4xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-4">
             Employee Feedback Analytics Dashboard
@@ -302,7 +296,6 @@ const Analytics = () => {
           </p>
         </div>
 
-        {/* Statistics Summary */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-6">
             <div className="flex items-center">
@@ -341,9 +334,7 @@ const Analytics = () => {
           </div>
         </div>
 
-        {/* Charts Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-          {/* Sentiment Distribution Pie Chart */}
           <div className="bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-6">
             <h3 className="text-lg font-semibold text-white mb-4">
               Sentiment Distribution
@@ -353,7 +344,6 @@ const Analytics = () => {
             </div>
           </div>
 
-          {/* Employee Happiness Index Trend */}
           <div className="bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-6">
             <h3 className="text-lg font-semibold text-white mb-4">
               Employee Happiness Index Trend
@@ -364,11 +354,10 @@ const Analytics = () => {
           </div>
         </div>
 
-        {/* Individual User Responses */}
         <div className="bg-gray-800 border border-gray-700 rounded-xl shadow-lg">
           <div className="px-6 py-4 border-b border-gray-700">
             <h3 className="text-lg font-semibold text-white">
-              Individual User Responses
+              Recent User Responses
             </h3>
           </div>
           
@@ -386,12 +375,11 @@ const Analytics = () => {
               </div>
             ) : (
               <div className="space-y-6">
-                {allResponses.map((survey, surveyIndex) => {
+                {allResponses.slice(0, 5).map((survey, surveyIndex) => {
                   const { date, time } = formatDateTime(survey.completedAt);
                   
                   return (
                     <div key={survey.surveyId} className="border border-gray-600 rounded-lg p-6 bg-gray-700">
-                      {/* Response Header */}
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 pb-4 border-b border-gray-600">
                         <h4 className="text-lg font-semibold text-white">
                           Survey Response {surveyIndex + 1}
@@ -412,7 +400,6 @@ const Analytics = () => {
                         </div>
                       </div>
 
-                      {/* Response Content */}
                       <div className="space-y-4">
                         {survey.responses.map((response, responseIndex) => {
                           const sentiment = getSentimentStyling(response.SentiAnalysis?.label);
